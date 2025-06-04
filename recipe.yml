@@ -41,12 +41,9 @@ stages:
     type: apt
     source:
       packages:
-      - htop
-      - neofetch
       - wget
       - curl
       - git
-      - cmake
       - build-essential
 
   - name: latex
