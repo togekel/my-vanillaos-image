@@ -56,6 +56,7 @@ stages:
       - texlive-full
       - texlive-lang-chinese
       - texlive-lang-cjk
+      - pandoc
   
   - name: python-pkgs
     type: apt
@@ -102,7 +103,15 @@ stages:
       remove:
         - "com.tencent.WeChat"
 
-  
+  - name: zotero
+    type: flatpak
+    user:
+      repourl: "https://flathub.org/repo/flathub.flatpakrepo"
+      reponame: "flathub"
+      install:
+        - "org.zotero.Zotero"
+      remove
+        - "org.zotero.Zotero"
 
   # - name: example-commands # Sample module demonstrating the Shell module with custom commands
   #   type: shell
