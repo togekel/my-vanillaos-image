@@ -110,7 +110,7 @@ stages:
       reponame: "flathub"
       install:
         - "org.zotero.Zotero"
-      remove
+      remove:
         - "org.zotero.Zotero"
 
   # - name: example-commands # Sample module demonstrating the Shell module with custom commands
