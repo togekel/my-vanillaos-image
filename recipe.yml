@@ -1,11 +1,11 @@
-name: Custom Vanilla Desktop # Replace this name with your image name
-id: custom # Replace this ID with your image ID
+name: Feng Vanilla Desktop # Replace this name with your image name
+id: feng-image # Replace this ID with your image ID
 stages:
 - id: build
   base: ghcr.io/vanilla-os/desktop:main # Optionally, Replace this image URL with a different one i.e. nvidia:main, etc
   singlelayer: false
   labels:
-    maintainer: self-maintained # Optionally, Replace this with your name
+    maintainer: feng # Optionally, Replace this with your name
   args:
     DEBIAN_FRONTEND: noninteractive # Set the image environment as non-interactive
   
@@ -23,16 +23,91 @@ stages:
 
   # Put your custom actions below this comment
 
-  - name: example-packages # Sample module using the built-in Apt module to install packages
+  - name: editors # Sample module using the built-in Apt module to install packages
     type: apt
     source:
       packages:
       - vim
+      - nano
+      - emacs
 
-  - name: example-commands # Sample module demonstrating the Shell module with custom commands
-    type: shell
-    commands:
-    - echo Example output
+  - name: browser
+    type: apt
+    source:
+      packages:
+      - firefox
+
+  - name: utils
+    type: apt
+    source:
+      packages:
+      - htop
+      - neofetch
+      - wget
+      - curl
+      - git
+      - cmake
+      - build-essential
+
+  - name: latex
+    type: apt
+    source:
+      packages:
+      - texlive-full
+      - texlive-lang-chinese
+      - texlive-lang-cjk
+  
+  - name: python-pkgs
+    type: apt
+    source:
+      packages:
+      - python3
+      - python3-numpy
+      - python3-matplotlib
+      - python3-pandas
+      - python3-venv
+
+  - name: virtualbox
+    type: apt
+    source:
+      packages:
+      - virtualbox
+      - virtualbox-ext-pack
+
+  - name: input-method
+    type: apt
+    source:
+      packages:
+      - fcitx5 
+      - fcitx5-configtool 
+      - fcitx5-chinese-addons
+
+  - name: qq
+    type: flatpak
+    user:
+      repourl: "https://flathub.org/repo/flathub.flatpakrepo"
+      reponame: "flathub"
+      install:
+        - "com.qq.QQ"
+      remove:
+        - "com.qq.QQ"
+
+  - name: wechat
+    type: flatpak
+    user:
+      repourl: "https://flathub.org/repo/flathub.flatpakrepo"
+      reponame: "flathub"
+      install:
+        - "com.tencent.WeChat"
+      remove:
+        - "com.tencent.WeChat"
+
+  
+
+  # - name: example-commands # Sample module demonstrating the Shell module with custom commands
+  #   type: shell
+  #   commands:
+  #   - echo Example output
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
