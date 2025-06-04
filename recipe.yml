@@ -52,8 +52,6 @@ stages:
       packages:
       - texlive-full
       - texlive-lang-chinese
-      - texlive-lang-cjk
-      - pandoc
   
   - name: python-pkgs
     type: apt
