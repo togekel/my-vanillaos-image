@@ -45,6 +45,7 @@ stages:
       - curl
       - git
       - build-essential
+      - cmake
 
   - name: latex
     type: apt
@@ -52,6 +53,7 @@ stages:
       packages:
       - texlive-full
       - texlive-lang-chinese
+      - pandoc
   
   - name: python-pkgs
     type: apt
@@ -69,6 +71,11 @@ stages:
       packages:
       - virtualbox
       - virtualbox-ext-pack
+
+  - name: virtualbox-ext-pack
+    type: shell
+    commands:
+    - echo "virtualbox-ext-pack virtualbox-ext-pack/license select true" | debconf-set-selections && apt-get install -y virtualbox virtualbox-ext-pack && apt-get clean
 
   - name: input-method
     type: apt
