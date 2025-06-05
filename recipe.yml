@@ -46,13 +46,6 @@ stages:
       - git
       - build-essential
       - cmake
-
-  - name: latex
-    type: apt
-    source:
-      packages:
-      - texlive-full
-      - texlive-lang-chinese
   
   - name: python-pkgs
     type: apt
