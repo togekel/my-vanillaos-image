@@ -47,22 +47,11 @@ stages:
       - build-essential
       - cmake
   
-  - name: python-pkgs
-    type: apt
-    source:
-      packages:
-      - python3
-      - python3-numpy
-      - python3-matplotlib
-      - python3-pandas
-      - python3-venv
-
   - name: virtualbox
     type: apt
     source:
       packages:
       - virtualbox
-      - virtualbox-ext-pack
 
   - name: virtualbox-ext-pack
     type: shell
